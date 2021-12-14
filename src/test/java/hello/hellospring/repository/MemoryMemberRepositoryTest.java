@@ -2,6 +2,7 @@ package hello.hellospring.repository;
 
 import hello.hellospring.domain.Member;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -28,7 +29,10 @@ public class MemoryMemberRepositoryTest {
         repository.save(member);
 
         //then
-        Member result = repository.findById(member.getId()).get();
+        Member result = repository.findById(member.getId()).get(); //optional 에서 get으로 꺼낸다.
+        //방법1
+        Assertions.assertEquals(member,result);
+        //방법2
         assertThat(result).isEqualTo(member);
     }
 
